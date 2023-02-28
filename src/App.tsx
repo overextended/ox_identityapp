@@ -13,6 +13,7 @@ import { path } from '../npwd.config';
 import './index.css';
 import fetchNui from './utils/fetchNui';
 import { Character, useSetCharacter } from './atoms/character';
+import Footer from './components/Footer';
 
 const Container = styled(Paper)`
   flex: 1;
@@ -40,13 +41,7 @@ interface AppProps {
 }
 
 const App = (props: AppProps) => {
-  const { pathname } = useLocation();
-  const [page, setPage] = useState(pathname);
   const setCharacter = useSetCharacter();
-
-  const handleChange = (_e: any, newPage: any) => {
-    setPage(newPage);
-  };
 
   useEffect(() => {
     fetchNui<Character>('getCharacter', null, {
@@ -69,26 +64,7 @@ const App = (props: AppProps) => {
               <Home />
             </Route>
           </Content>
-
-          <BottomNavigation value={page} onChange={handleChange} showLabels>
-            <BottomNavigationAction label={'Me'} value={path} component={NavLink} icon={<Person />} to={path} />
-            <BottomNavigationAction
-              label={'Licenses'}
-              value="licenses"
-              color="secondary"
-              component={NavLink}
-              icon={<CreditCard />}
-              to={`${path}/licenses`}
-            />
-            <BottomNavigationAction
-              label={'Shared'}
-              value="shared"
-              color="secondary"
-              component={NavLink}
-              icon={<People />}
-              to={`${path}/shared`}
-            />
-          </BottomNavigation>
+          <Footer />
         </Container>
       </ThemeSwitchProvider>
     </StyledEngineProvider>
