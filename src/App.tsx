@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { NuiProvider, useNuiEvent } from 'react-fivem-hooks';
-import { NavLink, useLocation, Routes, Route } from 'react-router-dom';
+import { NavLink, useLocation, Route } from 'react-router-dom';
 import styled from 'styled-components';
 import { IPhoneSettings } from '@project-error/npwd-types';
 import { i18n } from 'i18next';
@@ -51,9 +51,9 @@ const App = (props: AppProps) => {
         <Container square elevation={0} id="modalContainer">
           <Header />
           <Content>
-            <Routes>
-              <Route path={path} element={<Home />} />
-            </Routes>
+            <Route exact path={path}>
+              <Home />
+            </Route>
           </Content>
 
           <BottomNavigation value={page} onChange={handleChange} showLabels>
