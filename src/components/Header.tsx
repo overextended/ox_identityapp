@@ -1,8 +1,8 @@
-import React, { ReactNode } from 'react';
-import { APP_PRIMARY_COLOR } from '../app.theme';
-import { Typography, Box, useTheme, IconButton } from '@mui/material';
+import React from 'react';
+import { useTheme, IconButton } from '@mui/material';
 import { ArrowBack } from '@mui/icons-material';
 import styled from '@emotion/styled';
+import { useHistory } from 'react-router';
 
 export const HEADER_HEIGHT = '4rem';
 const Container = styled.div<{ backgroundColor: string }>`
@@ -15,9 +15,11 @@ const Container = styled.div<{ backgroundColor: string }>`
 
 const Header = () => {
   const theme = useTheme();
+  const history = useHistory();
+
   return (
     <Container backgroundColor={theme.palette.primary.main}>
-      <IconButton>
+      <IconButton onClick={() => history.push('/')}>
         <ArrowBack />
       </IconButton>
     </Container>
