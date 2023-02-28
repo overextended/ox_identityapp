@@ -8,7 +8,7 @@ interface Props {
 
 const InfoField: React.FC<Props> = ({ heading, value }) => {
   return (
-    <Box sx={{ paddingBottom: 0.5, paddingTop: 0.5 }}>
+    <Box>
       <Typography fontSize={12} color="#A6A7AB">
         {heading}
       </Typography>

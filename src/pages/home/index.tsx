@@ -3,7 +3,6 @@ import {
   Button,
   Card,
   CardContent,
-  Container,
   Dialog,
   DialogActions,
   DialogContent,
@@ -12,27 +11,27 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import { People, Share } from '@mui/icons-material';
-import React, { useRef, useState } from 'react';
+import { Share } from '@mui/icons-material';
+import React, { useState } from 'react';
 import InfoField from './components/InfoField';
+import { useCharacterValue } from '../../atoms/character';
 
 const Home: React.FC = () => {
   const [dialogVisible, setDialogVisible] = useState(false);
+  const character = useCharacterValue();
 
   return (
     <>
       <Typography fontSize={28} fontFamily="Noto Sans" mb={3}>
-        Your Identity
+        Your identity
       </Typography>
       <Card>
         <CardContent>
-          <Box>
-            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-              <InfoField heading="First name" value="Michael" />
-              <InfoField heading="Last name" value="Jordan" />
-              <InfoField heading="Date of birth" value="01/01/1992" />
-              <InfoField heading="Gender" value="Male" />
-            </Box>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+            <InfoField heading="First name" value={character.firstName} />
+            <InfoField heading="Last name" value={character.lastName} />
+            <InfoField heading="Date of birth" value={character.dob} />
+            <InfoField heading="Gender" value={character.gender} />
           </Box>
         </CardContent>
       </Card>
@@ -56,7 +55,7 @@ const Home: React.FC = () => {
         <DialogTitle>Share identity</DialogTitle>
         <DialogContent>
           <DialogContentText>Share the details of your person to someone else.</DialogContentText>
-          <TextField autoFocus variant="standard" label="Player server id" fullWidth />
+          <TextField autoFocus variant="standard" label="Player ID" fullWidth />
         </DialogContent>
         <DialogActions>
           <Button onClick={() => setDialogVisible(false)}>Cancel</Button>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NuiProvider, useNuiEvent } from 'react-fivem-hooks';
 import { NavLink, useLocation, Route } from 'react-router-dom';
 import styled from 'styled-components';
@@ -11,6 +11,8 @@ import Home from './pages/home';
 import Header, { HEADER_HEIGHT } from './components/Header';
 import { path } from '../npwd.config';
 import './index.css';
+import fetchNui from './utils/fetchNui';
+import { Character, useSetCharacter } from './atoms/character';
 
 const Container = styled(Paper)`
   flex: 1;
@@ -40,10 +42,22 @@ interface AppProps {
 const App = (props: AppProps) => {
   const { pathname } = useLocation();
   const [page, setPage] = useState(pathname);
+  const setCharacter = useSetCharacter();
 
   const handleChange = (_e: any, newPage: any) => {
     setPage(newPage);
   };
+
+  useEffect(() => {
+    fetchNui<Character>('getCharacter', null, {
+      firstName: 'Michael',
+      lastName: 'Jordan',
+      gender: 'Male',
+      dob: '01/09/1991',
+    }).then((data: Character) => {
+      setCharacter(data);
+    });
+  }, []);
 
   return (
     <StyledEngineProvider injectFirst>
