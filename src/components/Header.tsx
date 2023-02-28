@@ -10,7 +10,7 @@ const Container = styled.div<{ backgroundColor: string }>`
   align-items: center;
 
   min-height: ${HEADER_HEIGHT};
-  padding-left: 1.5rem;
+  margin-left: 1rem;
 `;
 
 const Header = () => {

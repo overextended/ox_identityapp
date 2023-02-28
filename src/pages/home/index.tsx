@@ -21,7 +21,7 @@ const Home: React.FC = () => {
 
   return (
     <>
-      <Typography fontSize={28} fontFamily="Noto Sans" mb={2}>
+      <Typography fontSize={28} fontFamily="Noto Sans" mb={3}>
         Your Identity
       </Typography>
       <Card>
@@ -36,7 +36,13 @@ const Home: React.FC = () => {
           </Box>
         </CardContent>
       </Card>
-      <Button onClick={() => setDialogVisible(true)} variant="contained" startIcon={<Share />} sx={{ marginTop: 2 }}>
+      <Button
+        disableElevation
+        onClick={() => setDialogVisible(true)}
+        variant="contained"
+        startIcon={<Share />}
+        sx={{ marginTop: 2 }}
+      >
         Share identity
       </Button>
 
@@ -54,7 +60,7 @@ const Home: React.FC = () => {
         </DialogContent>
         <DialogActions>
           <Button onClick={() => setDialogVisible(false)}>Cancel</Button>
-          <Button onClick={() => setDialogVisible(false)} variant="contained">
+          <Button disableElevation onClick={() => setDialogVisible(false)} variant="contained">
             Confirm
           </Button>
         </DialogActions>
