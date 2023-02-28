@@ -1,5 +1,5 @@
 let isFocused = false;
-const exps = global.exports
+const exps = global.exports;
 
 RegisterCommand(
   'focus',
@@ -12,7 +12,7 @@ RegisterCommand(
     }
 
     //SendNUIMessage({ type: 'RANDOM', payload: 'Hello from client' });
-    global.exports["npwd"].sendUIMessage('RANDOM', 'Hello from client');
+    global.exports['npwd'].sendUIMessage('RANDOM', 'Hello from client');
 
     SetNuiFocusKeepInput(true);
     SetNuiFocus(true, true);

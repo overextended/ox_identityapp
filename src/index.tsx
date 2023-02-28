@@ -63,7 +63,7 @@ const settings = {
 
 const theme = createTheme({
   palette: {
-    mode: 'light',
+    mode: 'dark',
   },
 });
 

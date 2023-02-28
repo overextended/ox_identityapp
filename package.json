@@ -1,5 +1,5 @@
 {
-  "name": "npwd_default_template_app",
+  "name": "ox_identityapp",
   "version": "0.0.0",
   "private": true,
   "devDependencies": {
@@ -19,10 +19,12 @@
     "babel-loader": "8.2.3",
     "concurrently": "^7.0.0",
     "cross-env": "^7.0.3",
+    "css-loader": "^6.7.3",
     "html-webpack-plugin": "5.5.0",
     "react-refresh": "^0.11.0",
     "react-refresh-typescript": "^2.0.3",
     "serve": "13.0.2",
+    "style-loader": "^3.3.1",
     "ts-loader": "^9.2.6",
     "typescript": "^4.5.5",
     "webpack": "5.66.0",

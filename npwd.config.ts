@@ -3,20 +3,20 @@ import { AppIcon } from './icon';
 
 const defaultLanguage = 'en';
 const localizedAppName = {
-  en: 'APP_NAME',
+  en: 'Identity',
 };
 
 interface Settings {
   language: 'en';
 }
 
-export const path = '/npwd_app_template';
+export const path = '/ox_identityapp';
 export default (settings: Settings) => ({
-  id: 'APP_NAME',
+  id: 'ox_identityapp',
   path,
   nameLocale: localizedAppName[settings?.language ?? defaultLanguage],
   color: '#fff',
-  backgroundColor: '#333',
+  backgroundColor: '#0C8599',
   icon: AppIcon,
   app: App,
 });

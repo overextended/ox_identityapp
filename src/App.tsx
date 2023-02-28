@@ -12,11 +12,17 @@ import {
   Typography,
   BottomNavigation,
   BottomNavigationAction,
+  Card,
+  CardActions,
+  CardContent,
+  Button,
+  Box,
 } from '@mui/material';
 import ThemeSwitchProvider from './ThemeSwitchProvider';
-import { HomeRounded, InfoRounded } from '@mui/icons-material';
+import { CreditCard, HomeRounded, InfoRounded, People, Person } from '@mui/icons-material';
 import Header, { HEADER_HEIGHT } from './components/Header';
 import { path } from '../npwd.config';
+import './index.css';
 
 const Container = styled(Paper)`
   flex: 1;
@@ -34,15 +40,7 @@ const Content = styled.div`
   padding: 1.5rem;
   max-height: calc(100% - 3.5rem - ${HEADER_HEIGHT});
   overflow: auto;
-`;
-
-const LinkItem = styled(Link)`
-  font-family: sans-serif;
-  text-decoration: none;
-`;
-
-const Footer = styled.footer`
-  margin-top: auto;
+  font-family: 'Roboto', serif;
 `;
 
 interface AppProps {
@@ -52,10 +50,6 @@ interface AppProps {
 }
 
 const App = (props: AppProps) => {
-  const history = useHistory();
-  const [count, setCount] = useState(0);
-  const { data } = useNuiEvent<string>({ event: 'RANDOM' });
-
   const { pathname } = useLocation();
   const [page, setPage] = useState(pathname);
 
@@ -67,47 +61,72 @@ const App = (props: AppProps) => {
     <StyledEngineProvider injectFirst>
       <ThemeSwitchProvider mode={props.theme.palette.mode}>
         <Container square elevation={0}>
-          <Header>Template app</Header>
+          <Header />
           <Content>
-            <button onClick={() => history.push('/')} style={{ alignSelf: 'flex-start' }}>
-              Back
-            </button>
-
-            <div>
-              <h1>Template app - Heading 1</h1>
-              <h2>Data from client: {data}</h2>
-              <h3>You are at {page}</h3>
-
-              <p>Language is: {props.settings.language.label}</p>
-
-              <div>
-                <button onClick={() => setCount((prev) => prev + 1)}>+</button>
-                <button>{count}</button>
-                <button onClick={() => setCount((prev) => prev - 1)}>-</button>
-              </div>
-            </div>
-
-            <Footer>
-              <LinkItem to="/">
-                <Typography>Home</Typography>
-              </LinkItem>
-            </Footer>
+            <Typography fontSize={28} fontFamily="Noto Sans" mb={2}>
+              Your Identity
+            </Typography>
+            <Card>
+              <CardContent>
+                <Box>
+                  <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                    <Box>
+                      <Typography fontSize={12} color="#A6A7AB">
+                        First name
+                      </Typography>
+                      <Typography fontSize={20} fontFamily="Noto Sans">
+                        Michael
+                      </Typography>
+                    </Box>
+                    <Box>
+                      <Typography fontSize={12} color="#A6A7AB">
+                        Last name
+                      </Typography>
+                      <Typography fontSize={20} fontFamily="Noto Sans">
+                        Jordan
+                      </Typography>
+                    </Box>
+                    <Box>
+                      <Typography fontSize={12} color="#A6A7AB">
+                        Date of birth
+                      </Typography>
+                      <Typography fontSize={20} fontFamily="Noto Sans">
+                        01/01/1992
+                      </Typography>
+                    </Box>
+                    <Box>
+                      <Typography fontSize={12} color="#A6A7AB">
+                        Gender
+                      </Typography>
+                      <Typography fontSize={20} fontFamily="Noto Sans">
+                        Male
+                      </Typography>
+                    </Box>
+                  </Box>
+                </Box>
+              </CardContent>
+            </Card>
+            <Button variant="contained" startIcon={<People />} sx={{ marginTop: 2 }}>
+              Share identity
+            </Button>
           </Content>
 
           <BottomNavigation value={page} onChange={handleChange} showLabels>
+            <BottomNavigationAction label={'Me'} value="/home" component={NavLink} icon={<Person />} to={path} />
             <BottomNavigationAction
-              label={'Home'}
-              value="/home"
+              label={'Licenses'}
+              value="/licenses"
+              color="secondary"
               component={NavLink}
-              icon={<HomeRounded />}
+              icon={<CreditCard />}
               to={path}
             />
             <BottomNavigationAction
-              label={'About'}
-              value="/about"
+              label={'Shared'}
+              value="/shared"
               color="secondary"
               component={NavLink}
-              icon={<InfoRounded />}
+              icon={<People />}
               to={path}
             />
           </BottomNavigation>
