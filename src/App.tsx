@@ -1,25 +1,13 @@
 import React, { useState } from 'react';
 import { NuiProvider, useNuiEvent } from 'react-fivem-hooks';
-import { Link, NavLink, useHistory, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, Routes, Route } from 'react-router-dom';
 import styled from 'styled-components';
-
 import { IPhoneSettings } from '@project-error/npwd-types';
 import { i18n } from 'i18next';
-import {
-  Theme,
-  StyledEngineProvider,
-  Paper,
-  Typography,
-  BottomNavigation,
-  BottomNavigationAction,
-  Card,
-  CardActions,
-  CardContent,
-  Button,
-  Box,
-} from '@mui/material';
+import { Theme, StyledEngineProvider, Paper, BottomNavigation, BottomNavigationAction } from '@mui/material';
 import ThemeSwitchProvider from './ThemeSwitchProvider';
 import { CreditCard, HomeRounded, InfoRounded, People, Person } from '@mui/icons-material';
+import Home from './pages/home';
 import Header, { HEADER_HEIGHT } from './components/Header';
 import { path } from '../npwd.config';
 import './index.css';
@@ -60,74 +48,31 @@ const App = (props: AppProps) => {
   return (
     <StyledEngineProvider injectFirst>
       <ThemeSwitchProvider mode={props.theme.palette.mode}>
-        <Container square elevation={0}>
+        <Container square elevation={0} id="modalContainer">
           <Header />
           <Content>
-            <Typography fontSize={28} fontFamily="Noto Sans" mb={2}>
-              Your Identity
-            </Typography>
-            <Card>
-              <CardContent>
-                <Box>
-                  <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                    <Box>
-                      <Typography fontSize={12} color="#A6A7AB">
-                        First name
-                      </Typography>
-                      <Typography fontSize={20} fontFamily="Noto Sans">
-                        Michael
-                      </Typography>
-                    </Box>
-                    <Box>
-                      <Typography fontSize={12} color="#A6A7AB">
-                        Last name
-                      </Typography>
-                      <Typography fontSize={20} fontFamily="Noto Sans">
-                        Jordan
-                      </Typography>
-                    </Box>
-                    <Box>
-                      <Typography fontSize={12} color="#A6A7AB">
-                        Date of birth
-                      </Typography>
-                      <Typography fontSize={20} fontFamily="Noto Sans">
-                        01/01/1992
-                      </Typography>
-                    </Box>
-                    <Box>
-                      <Typography fontSize={12} color="#A6A7AB">
-                        Gender
-                      </Typography>
-                      <Typography fontSize={20} fontFamily="Noto Sans">
-                        Male
-                      </Typography>
-                    </Box>
-                  </Box>
-                </Box>
-              </CardContent>
-            </Card>
-            <Button variant="contained" startIcon={<People />} sx={{ marginTop: 2 }}>
-              Share identity
-            </Button>
+            <Routes>
+              <Route path={path} element={<Home />} />
+            </Routes>
           </Content>
 
           <BottomNavigation value={page} onChange={handleChange} showLabels>
-            <BottomNavigationAction label={'Me'} value="/home" component={NavLink} icon={<Person />} to={path} />
+            <BottomNavigationAction label={'Me'} value={path} component={NavLink} icon={<Person />} to={path} />
             <BottomNavigationAction
               label={'Licenses'}
-              value="/licenses"
+              value="licenses"
               color="secondary"
               component={NavLink}
               icon={<CreditCard />}
-              to={path}
+              to={`${path}/licenses`}
             />
             <BottomNavigationAction
               label={'Shared'}
-              value="/shared"
+              value="shared"
               color="secondary"
               component={NavLink}
               icon={<People />}
-              to={path}
+              to={`${path}/shared`}
             />
           </BottomNavigation>
         </Container>
