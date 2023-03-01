@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import { NuiProvider, useNuiEvent } from 'react-fivem-hooks';
-import { NavLink, useLocation, Route } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { NuiProvider } from 'react-fivem-hooks';
+import { Route } from 'react-router-dom';
 import styled from 'styled-components';
 import { IPhoneSettings } from '@project-error/npwd-types';
 import { i18n } from 'i18next';
-import { Theme, StyledEngineProvider, Paper, BottomNavigation, BottomNavigationAction } from '@mui/material';
+import { Theme, StyledEngineProvider, Paper } from '@mui/material';
 import ThemeSwitchProvider from './ThemeSwitchProvider';
-import { CreditCard, HomeRounded, InfoRounded, People, Person } from '@mui/icons-material';
-import Home from './pages/home';
+import Home from './pages/home/Home';
 import Header, { HEADER_HEIGHT } from './components/Header';
 import { path } from '../npwd.config';
 import './index.css';
 import fetchNui from './utils/fetchNui';
 import { Character, useSetCharacter } from './atoms/character';
 import Footer from './components/Footer';
+import Licenses from './pages/licenses/Licenses';
 
 const Container = styled(Paper)`
   flex: 1;
@@ -62,6 +62,9 @@ const App = (props: AppProps) => {
           <Content>
             <Route exact path={path}>
               <Home />
+            </Route>
+            <Route path={`${path}/licenses`}>
+              <Licenses />
             </Route>
           </Content>
           <Footer />

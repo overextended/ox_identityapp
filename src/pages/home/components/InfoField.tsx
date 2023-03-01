@@ -12,7 +12,7 @@ const InfoField: React.FC<Props> = ({ heading, value }) => {
       <Typography fontSize={12} color="#A6A7AB">
         {heading}
       </Typography>
-      <Typography fontSize={20} fontFamily="Noto Sans">
+      <Typography fontSize={20} fontFamily="Roboto" fontWeight={300}>
         {value}
       </Typography>
     </Box>

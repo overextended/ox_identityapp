@@ -9,12 +9,12 @@ import {
   DialogContentText,
   DialogTitle,
   TextField,
-  Typography,
 } from '@mui/material';
 import { Share } from '@mui/icons-material';
 import React, { useState } from 'react';
 import InfoField from './components/InfoField';
 import { useCharacterValue } from '../../atoms/character';
+import PageHeading from '../../components/PageHeading';
 
 const Home: React.FC = () => {
   const [dialogVisible, setDialogVisible] = useState(false);
@@ -22,9 +22,7 @@ const Home: React.FC = () => {
 
   return (
     <>
-      <Typography fontSize={28} fontFamily="Noto Sans" mb={3}>
-        Your identity
-      </Typography>
+      <PageHeading heading="Your identity" />
       <Card>
         <CardContent>
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
