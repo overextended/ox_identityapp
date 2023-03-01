@@ -12,7 +12,7 @@ export const Licenses: React.FC = () => {
       <PageHeading heading="Your licenses" />
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
         {LICENSES.map((license) => (
-          <LicenseCard license={license} />
+          <LicenseCard license={license} key={license} />
         ))}
       </Box>
       <LicenseDialog />

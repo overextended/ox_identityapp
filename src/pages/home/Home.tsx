@@ -1,23 +1,14 @@
-import {
-  Box,
-  Button,
-  Card,
-  CardContent,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-  TextField,
-} from '@mui/material';
+import { Box, Button, Card, CardContent } from '@mui/material';
 import { Share } from '@mui/icons-material';
-import React, { useState } from 'react';
+import React from 'react';
 import InfoField from './components/InfoField';
 import { useCharacterValue } from '../../atoms/character';
 import PageHeading from '../../components/PageHeading';
+import IdentityDialog from './components/IdentityDialog';
+import { useSetShareIdentityDialog } from '../../atoms/dialogs';
 
 const Home: React.FC = () => {
-  const [dialogVisible, setDialogVisible] = useState(false);
+  const setIdentityDialog = useSetShareIdentityDialog();
   const character = useCharacterValue();
 
   return (
@@ -35,33 +26,14 @@ const Home: React.FC = () => {
       </Card>
       <Button
         disableElevation
-        onClick={() => setDialogVisible(true)}
+        onClick={() => setIdentityDialog(true)}
         variant="contained"
         startIcon={<Share />}
         sx={{ marginTop: 2 }}
       >
         Share identity
       </Button>
-
-      <Dialog
-        open={dialogVisible}
-        onClose={() => setDialogVisible(false)}
-        container={() => document.getElementById('modalContainer')}
-        sx={{ position: 'absolute' }}
-        hideBackdrop
-      >
-        <DialogTitle>Share identity</DialogTitle>
-        <DialogContent>
-          <DialogContentText>Share the details of your person to someone else.</DialogContentText>
-          <TextField autoFocus variant="standard" label="Player ID" fullWidth />
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={() => setDialogVisible(false)}>Cancel</Button>
-          <Button disableElevation onClick={() => setDialogVisible(false)} variant="contained">
-            Confirm
-          </Button>
-        </DialogActions>
-      </Dialog>
+      <IdentityDialog />
     </>
   );
 };

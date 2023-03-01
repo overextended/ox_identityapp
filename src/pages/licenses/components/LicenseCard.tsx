@@ -11,7 +11,7 @@ const LicenseCard: React.FC<Props> = ({ license }) => {
   const setDialog = useSetShareLicenseDialog();
 
   return (
-    <Card key={license}>
+    <Card>
       <CardContent>
         <Typography fontSize={20}>{license} license</Typography>
         <Typography fontSize={14} color="#A6A7AB">
