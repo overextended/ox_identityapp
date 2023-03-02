@@ -43,8 +43,8 @@
     "watch:server": "esbuild server/server.ts --bundle --sourcemap --platform=node --watch --outfile=dist/server.js"
   },
   "dependencies": {
-    "@emotion/react": "^11.10.6",
-    "@emotion/styled": "^11.10.6",
+    "@emotion/react": "^11.7.0",
+    "@emotion/styled": "^11.6.0",
     "@mui/icons-material": "^5.11.11",
     "@mui/material": "^5.11.11",
     "@npwd/types": "^1.6.1",

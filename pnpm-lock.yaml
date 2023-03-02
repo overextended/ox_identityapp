@@ -5,8 +5,8 @@ specifiers:
   '@babel/preset-react': 7.16.7
   '@citizenfx/client': 2.0.6298-1
   '@citizenfx/server': 2.0.6298-1
-  '@emotion/react': ^11.10.6
-  '@emotion/styled': ^11.10.6
+  '@emotion/react': ^11.7.0
+  '@emotion/styled': ^11.6.0
   '@mui/icons-material': ^5.11.11
   '@mui/material': ^5.11.11
   '@npwd/types': ^1.6.1
@@ -406,8 +406,8 @@ packages:
     resolution: {integrity: sha512-5WWrHb+GohE/oorWngfGXJaqyGvUMNZF8AZDGRfeOT5/UAINNCFupcx7mdBbpBeQ3slYjSfJjRcfKK9tcK+ILA==}
     dev: true
 
-  /@citizenfx/client/2.0.6301-1:
-    resolution: {integrity: sha512-0UfxFPr1ZpH1KQPFCzulBTVLAf3+CIXaVRhT194YVBW4jl3Vh5qMQerYqv0L8Z53OG6EwzrhdRneUHxB8j8okw==}
+  /@citizenfx/client/2.0.6302-1:
+    resolution: {integrity: sha512-SnyfHlagSNOr4NnJAwOdt5CsvH6tbqJg0Q4szTKV7GyEm13rlbDtI60uesFR1YdEobVi8QCXbjAfUWFM+/Hp5A==}
     dev: false
 
   /@citizenfx/server/2.0.5885-1:
@@ -418,8 +418,8 @@ packages:
     resolution: {integrity: sha512-IV9PXHnQC3Jjm//otWPV31D5kSbM2Kq7thrOKao30ujXLW1rQqLjlbF1ckI4d7UZWu1BgFZGhODF+7cMKdIrsw==}
     dev: true
 
-  /@citizenfx/server/2.0.6301-1:
-    resolution: {integrity: sha512-GvQM9IrYf49Bos8B/HWbeSvC1Y55fafY9SO2eBJi+iVM1anZZhHbRgFZVBN0q9gZNd7AGfRA7XLuhiquG7Xvow==}
+  /@citizenfx/server/2.0.6302-1:
+    resolution: {integrity: sha512-0A+kfaX6K8mXT9f1HWPS6Q4G5Xs/6BSQjK8wnW3RmtnfAfPqX+HNciKIbyH2boP0dlXFOsSPGEyRTbIC8CRoQA==}
     dev: false
 
   /@discoveryjs/json-ext/0.5.7:
@@ -849,8 +849,8 @@ packages:
   /@overextended/ox_core/0.16.0:
     resolution: {integrity: sha512-yp1kJsuGuzClMXPfb79KorvL8j+lbzgkBkdXsFwjm8FWGskxy5YalmEM4t+c6nYjpkr4aFZn8u3R9M9WEyVmeA==}
     dependencies:
-      '@citizenfx/client': 2.0.6301-1
-      '@citizenfx/server': 2.0.6301-1
+      '@citizenfx/client': 2.0.6302-1
+      '@citizenfx/server': 2.0.6302-1
       '@types/node': 16.18.14
       typescript: 4.9.5
     dev: false
