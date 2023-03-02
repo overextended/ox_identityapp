@@ -16,7 +16,7 @@ export default (settings: Settings) => ({
   path,
   nameLocale: localizedAppName[settings?.language ?? defaultLanguage],
   color: '#fff',
-  backgroundColor: '#0C8599',
+  backgroundColor: '#a6c8ff',
   icon: AppIcon,
   app: App,
 });
