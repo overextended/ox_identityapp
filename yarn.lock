@@ -308,12 +308,7 @@
   resolved "https://registry.yarnpkg.com/@citizenfx/client/-/client-2.0.5885-1.tgz#9c5d328891d81408513ae88bd07e2cc05cb29934"
   integrity sha512-Ba5YYfxhZ82PcOY+2rjqDElTzPt7NrN6/o2U+wYPKK2VU/wRdCsMonpMsr7dYob2ToN5Qe96w5VNI3m5OrouJQ==
 
-"@citizenfx/client@^2.0.5369-1":
-  version "2.0.5369-1"
-  resolved "https://registry.yarnpkg.com/@citizenfx/client/-/client-2.0.5369-1.tgz#cb735e1232c587e1a7f1c93de8465da431c0d491"
-  integrity sha512-HbrScDpNhpGJ1FW1AgHW7rLJBxc/xpSuG6vqdFajjjzme096Uo2bdrE3V2RXQE4mFd41akgKpjJtnHHHX/zb5g==
-
-"@citizenfx/client@latest":
+"@citizenfx/client@2.0.6298-1", "@citizenfx/client@latest":
   version "2.0.6298-1"
   resolved "https://registry.yarnpkg.com/@citizenfx/client/-/client-2.0.6298-1.tgz#5ca6ad02cb7dbdf179b2b834f7d9f7556d3eef42"
   integrity sha512-5WWrHb+GohE/oorWngfGXJaqyGvUMNZF8AZDGRfeOT5/UAINNCFupcx7mdBbpBeQ3slYjSfJjRcfKK9tcK+ILA==
@@ -323,12 +318,7 @@
   resolved "https://registry.yarnpkg.com/@citizenfx/server/-/server-2.0.5885-1.tgz#f95a6d1c7996da0bf138976aee680d308de15c95"
   integrity sha512-q8KRecfjJ3RjCfBT/3CSHNTr2efUs9uq8pIoPF4TGkn5X7jgTBprrp3VMayaee3Xekay3RTufpzsOaeHUntQeA==
 
-"@citizenfx/server@^2.0.5369-1":
-  version "2.0.5369-1"
-  resolved "https://registry.yarnpkg.com/@citizenfx/server/-/server-2.0.5369-1.tgz#5b812ad8eace1188ff56194a680942b026f8fe55"
-  integrity sha512-yAeTDjGHVIFPrAr+gJJAPfm5jY2zujLRjG/XuQkC6P1NafczHp03yzJY3Gr5q41AF83ANC72FEN5BSSgKkP3zg==
-
-"@citizenfx/server@latest":
+"@citizenfx/server@2.0.6298-1", "@citizenfx/server@latest":
   version "2.0.6298-1"
   resolved "https://registry.yarnpkg.com/@citizenfx/server/-/server-2.0.6298-1.tgz#bc059876c71f26e153d6744bb7759c39acebfec3"
   integrity sha512-IV9PXHnQC3Jjm//otWPV31D5kSbM2Kq7thrOKao30ujXLW1rQqLjlbF1ckI4d7UZWu1BgFZGhODF+7cMKdIrsw==

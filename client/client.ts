@@ -3,8 +3,7 @@ import { player } from '@overextended/ox_core/client';
 
 let licenses: Record<string, { issued: Date }> = {};
 
-RegisterNuiCallbackType('getCharacter');
-on('__cfx_nui:getCharacter', (_: any, cb: Function) => {
+RegisterNuiCallback('getCharacter', (_: any, cb: Function) => {
   console.log('getCharacter');
   const gender = player?.get('gender');
   cb({
