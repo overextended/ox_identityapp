@@ -2,7 +2,7 @@ import React from 'react';
 import { useTheme, IconButton } from '@mui/material';
 import { ArrowBack } from '@mui/icons-material';
 import styled from '@emotion/styled';
-import { useHistory } from 'react-router';
+import { useHistory } from 'react-router-dom';
 
 export const HEADER_HEIGHT = '4rem';
 const Container = styled.div<{ backgroundColor: string }>`
