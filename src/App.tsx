@@ -10,10 +10,11 @@ import Home from './pages/home/Home';
 import Header, { HEADER_HEIGHT } from './components/Header';
 import { path } from '../npwd.config';
 import './index.css';
-import fetchNui from './utils/fetchNui';
-import { Character, useSetCharacter } from './atoms/character';
 import Footer from './components/Footer';
 import Licenses from './pages/licenses/Licenses';
+import { RecoilRoot } from 'recoil';
+import fetchNui from './utils/fetchNui';
+import { Character, useSetCharacter } from './atoms/character';
 
 const Container = styled(Paper)`
   flex: 1;
@@ -47,11 +48,9 @@ const App = (props: AppProps) => {
     fetchNui<Character>('getCharacter', null, {
       firstName: 'Michael',
       lastName: 'Jordan',
+      dob: '01/02/1992',
       gender: 'Male',
-      dob: '01/09/1991',
-    }).then((data: Character) => {
-      setCharacter(data);
-    });
+    }).then((data: Character) => setCharacter(data));
   }, []);
 
   return (
@@ -75,9 +74,11 @@ const App = (props: AppProps) => {
 };
 
 const WithProviders: React.FC<AppProps> = (props) => (
-  <NuiProvider>
-    <App {...props} />
-  </NuiProvider>
+  <RecoilRoot>
+    <NuiProvider>
+      <App {...props} />
+    </NuiProvider>
+  </RecoilRoot>
 );
 
 export default WithProviders;

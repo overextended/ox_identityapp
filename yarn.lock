@@ -303,15 +303,35 @@
     "@babel/helper-validator-identifier" "^7.16.7"
     to-fast-properties "^2.0.0"
 
+"@citizenfx/client@2.0.5885-1":
+  version "2.0.5885-1"
+  resolved "https://registry.yarnpkg.com/@citizenfx/client/-/client-2.0.5885-1.tgz#9c5d328891d81408513ae88bd07e2cc05cb29934"
+  integrity sha512-Ba5YYfxhZ82PcOY+2rjqDElTzPt7NrN6/o2U+wYPKK2VU/wRdCsMonpMsr7dYob2ToN5Qe96w5VNI3m5OrouJQ==
+
 "@citizenfx/client@^2.0.5369-1":
   version "2.0.5369-1"
   resolved "https://registry.yarnpkg.com/@citizenfx/client/-/client-2.0.5369-1.tgz#cb735e1232c587e1a7f1c93de8465da431c0d491"
   integrity sha512-HbrScDpNhpGJ1FW1AgHW7rLJBxc/xpSuG6vqdFajjjzme096Uo2bdrE3V2RXQE4mFd41akgKpjJtnHHHX/zb5g==
 
+"@citizenfx/client@latest":
+  version "2.0.6298-1"
+  resolved "https://registry.yarnpkg.com/@citizenfx/client/-/client-2.0.6298-1.tgz#5ca6ad02cb7dbdf179b2b834f7d9f7556d3eef42"
+  integrity sha512-5WWrHb+GohE/oorWngfGXJaqyGvUMNZF8AZDGRfeOT5/UAINNCFupcx7mdBbpBeQ3slYjSfJjRcfKK9tcK+ILA==
+
+"@citizenfx/server@2.0.5885-1":
+  version "2.0.5885-1"
+  resolved "https://registry.yarnpkg.com/@citizenfx/server/-/server-2.0.5885-1.tgz#f95a6d1c7996da0bf138976aee680d308de15c95"
+  integrity sha512-q8KRecfjJ3RjCfBT/3CSHNTr2efUs9uq8pIoPF4TGkn5X7jgTBprrp3VMayaee3Xekay3RTufpzsOaeHUntQeA==
+
 "@citizenfx/server@^2.0.5369-1":
   version "2.0.5369-1"
   resolved "https://registry.yarnpkg.com/@citizenfx/server/-/server-2.0.5369-1.tgz#5b812ad8eace1188ff56194a680942b026f8fe55"
   integrity sha512-yAeTDjGHVIFPrAr+gJJAPfm5jY2zujLRjG/XuQkC6P1NafczHp03yzJY3Gr5q41AF83ANC72FEN5BSSgKkP3zg==
+
+"@citizenfx/server@latest":
+  version "2.0.6298-1"
+  resolved "https://registry.yarnpkg.com/@citizenfx/server/-/server-2.0.6298-1.tgz#bc059876c71f26e153d6744bb7759c39acebfec3"
+  integrity sha512-IV9PXHnQC3Jjm//otWPV31D5kSbM2Kq7thrOKao30ujXLW1rQqLjlbF1ckI4d7UZWu1BgFZGhODF+7cMKdIrsw==
 
 "@discoveryjs/json-ext@^0.5.0":
   version "0.5.6"
@@ -455,6 +475,11 @@
     js-yaml "^4.1.0"
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
+
+"@fortawesome/fontawesome-common-types@6.1.1":
+  version "6.1.1"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-common-types/-/fontawesome-common-types-6.1.1.tgz#7dc996042d21fc1ae850e3173b5c67b0549f9105"
+  integrity sha512-wVn5WJPirFTnzN6tR95abCx+ocH+3IFLXAgyavnf9hUmN0CfWoDjPT/BAWsUVwSlYYVBeCLJxaqi7ZGe4uSjBA==
 
 "@humanwhocodes/config-array@^0.9.2":
   version "0.9.5"
@@ -605,6 +630,11 @@
     prop-types "^15.8.1"
     react-is "^18.2.0"
 
+"@nativewrappers/client@^1.7.33":
+  version "1.7.33"
+  resolved "https://registry.yarnpkg.com/@nativewrappers/client/-/client-1.7.33.tgz#132f7fb8313ad3fd16c06b037f109c83f8a61267"
+  integrity sha512-phuBBGdDPxZiZyw5CaFs1XWfvllnEtwATMdLaNucwMofVg/O/FjlP1bTUq4SOm4qhSZ4Zdo351ijHzBSIbZs6g==
+
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz#7619c2eb21b25483f6d167548b4cfd5a7488c3d5"
@@ -625,6 +655,29 @@
   dependencies:
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
+
+"@overextended/ox_core@^0.16.0":
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/@overextended/ox_core/-/ox_core-0.16.0.tgz#51f6e81b2a389e4ed07ae2ce656b8f5870f64a95"
+  integrity sha512-yp1kJsuGuzClMXPfb79KorvL8j+lbzgkBkdXsFwjm8FWGskxy5YalmEM4t+c6nYjpkr4aFZn8u3R9M9WEyVmeA==
+  dependencies:
+    "@citizenfx/client" latest
+    "@citizenfx/server" latest
+    "@types/node" "^16.9.1"
+    typescript "^4.7.4"
+
+"@overextended/ox_lib@^3.1.0":
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/@overextended/ox_lib/-/ox_lib-3.1.0.tgz#9d174107ccdb062a2f42cb52bc01a6de9158cdd9"
+  integrity sha512-ekGrCafJxTJsLWllNoN3KY3rlubaZ2r9vqVlDgKW9JcytPrPAkftg9Q49kzmVdttyfxZcpKhqm/lW2fORIXEOg==
+  dependencies:
+    "@citizenfx/client" "2.0.5885-1"
+    "@citizenfx/server" "2.0.5885-1"
+    "@fortawesome/fontawesome-common-types" "6.1.1"
+    "@nativewrappers/client" "^1.7.33"
+    "@types/node" "16.9.1"
+    "@types/react" "^18.0.26"
+    typescript "^4.9.4"
 
 "@pmmmwh/react-refresh-webpack-plugin@^0.5.4":
   version "0.5.4"
@@ -766,6 +819,16 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.21.tgz#864b987c0c68d07b4345845c3e63b75edd143644"
   integrity sha512-DBZCJbhII3r90XbQxI8Y9IjjiiOGlZ0Hr32omXIZvwwZ7p4DMMXGrKXVyPfuoBOri9XNtL0UK69jYIBIsRX3QQ==
 
+"@types/node@16.9.1":
+  version "16.9.1"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.9.1.tgz#0611b37db4246c937feef529ddcc018cf8e35708"
+  integrity sha512-QpLcX9ZSsq3YYUUnD3nFDY8H7wctAhQj/TFKL8Ya8v5fMm3CFXxo8zStsLAl780ltoYoo1WvKUVGBQK+1ifr7g==
+
+"@types/node@^16.9.1":
+  version "16.18.13"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.18.13.tgz#c572f8837094c6e3b73918a68674c784f6877fc0"
+  integrity sha512-l0/3XZ153UTlNOnZK8xSNoJlQda9/WnYgiTdcKKPJSZjdjI9MU+A9oMXOesAWLSnqAaaJhj3qfQsU07Dr8OUwg==
+
 "@types/node@^18.6.4":
   version "18.6.4"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-18.6.4.tgz#fd26723a8a3f8f46729812a7f9b4fc2d1608ed39"
@@ -838,6 +901,15 @@
   version "17.0.39"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.39.tgz#d0f4cde092502a6db00a1cded6e6bf2abb7633ce"
   integrity sha512-UVavlfAxDd/AgAacMa60Azl7ygyQNRwC/DsHZmKgNvPmRR5p70AJ5Q9EAmL2NWOJmeV+vVUI4IAP7GZrN8h8Ug==
+  dependencies:
+    "@types/prop-types" "*"
+    "@types/scheduler" "*"
+    csstype "^3.0.2"
+
+"@types/react@^18.0.26":
+  version "18.0.28"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.0.28.tgz#accaeb8b86f4908057ad629a26635fe641480065"
+  integrity sha512-RD0ivG1kEztNBdoAK7lekI9M+azSnitIn85h4iOiaLjaTrMjzslhaqCGaI4IyCJ1RljWiLCEu4jyrLLgqxBTew==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
@@ -4577,6 +4649,11 @@ typescript@^4.3.2, typescript@^4.5.5:
   version "4.6.2"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.6.2.tgz#fe12d2727b708f4eef40f51598b3398baa9611d4"
   integrity sha512-HM/hFigTBHZhLXshn9sN37H085+hQGeJHJ/X7LpBWLID/fbc2acUMfU+lGD98X81sKP+pFa9f0DZmCwB9GnbAg==
+
+typescript@^4.7.4, typescript@^4.9.4:
+  version "4.9.5"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.9.5.tgz#095979f9bcc0d09da324d58d03ce8f8374cbe65a"
+  integrity sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==
 
 unpipe@1.0.0, unpipe@~1.0.0:
   version "1.0.0"

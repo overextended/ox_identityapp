@@ -1,32 +1,16 @@
-let isFocused = false;
-const exps = global.exports;
+import { triggerServerCallback } from '@overextended/ox_lib/client';
+import { player } from '@overextended/ox_core/client';
 
-RegisterCommand(
-  'focus',
-  () => {
-    if (isFocused) {
-      SetNuiFocus(false, false);
-      SetNuiFocusKeepInput(false);
-      isFocused = false;
-      return;
-    }
+let licenses: Record<string, { issued: Date }> = {};
 
-    //SendNUIMessage({ type: 'RANDOM', payload: 'Hello from client' });
-    global.exports['npwd'].sendUIMessage('RANDOM', 'Hello from client');
-
-    SetNuiFocusKeepInput(true);
-    SetNuiFocus(true, true);
-    isFocused = true;
-  },
-  false
-);
-
-RegisterCommand(
-  'unfocus',
-  () => {
-    SetNuiFocus(false, false);
-  },
-  false
-);
-
-RegisterKeyMapping('focus', 'Toggle Phone', 'keyboard', 'n');
+RegisterNuiCallbackType('getCharacter');
+on('__cfx_nui:getCharacter', (_: any, cb: Function) => {
+  console.log('getCharacter');
+  const gender = player?.get('gender');
+  cb({
+    firstName: player?.firstname,
+    lastName: player?.lastname,
+    dob: player?.get('dateofbirth'),
+    gender: gender.charAt(0).toUpperCase() + gender.slice(1),
+  });
+});
