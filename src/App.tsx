@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { NuiProvider } from 'react-fivem-hooks';
 import { Route } from 'react-router-dom';
 import styled from 'styled-components';
-import { IPhoneSettings } from '@project-error/npwd-types';
+import { IPhoneSettings } from '@npwd/types';
 import { i18n } from 'i18next';
 import { Theme, StyledEngineProvider, Paper } from '@mui/material';
 import ThemeSwitchProvider from './ThemeSwitchProvider';

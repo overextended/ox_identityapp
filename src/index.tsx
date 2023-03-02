@@ -15,7 +15,7 @@ import App from './App';
 import image from './bg.png';
 import { NuiProvider } from 'react-fivem-hooks';
 import { RecoilRoot } from 'recoil';
-import { IPhoneSettings } from '@project-error/npwd-types';
+import { IPhoneSettings } from '@npwd/types';
 import i18next from 'i18next';
 import { createTheme } from '@mui/material';
 
