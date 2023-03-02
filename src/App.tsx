@@ -15,6 +15,10 @@ import Licenses from './pages/licenses/Licenses';
 import { RecoilRoot } from 'recoil';
 import fetchNui from './utils/fetchNui';
 import { Character, useSetCharacter } from './atoms/character';
+import { RecoilEnv } from 'recoil';
+
+// Disable atom warnings due to HMR
+RecoilEnv.RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED = false;
 
 const Container = styled(Paper)`
   flex: 1;

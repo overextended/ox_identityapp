@@ -61,7 +61,7 @@
     "react-fivem-hooks": "^1.0.2-1",
     "react-hot-loader": "^4.13.0",
     "react-router-dom": "5.3.0",
-    "recoil": "^0.6.1",
+    "recoil": "0.7.7",
     "styled-components": "^5.3.3"
   }
 }
