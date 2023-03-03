@@ -33,14 +33,11 @@
   },
   "scripts": {
     "start": "cross-env REACT_APP_IN_GAME=1 webpack-cli serve",
-    "build": "cross-env REACT_APP_IN_GAME=1 webpack --mode=production",
+    "build": "cross-env REACT_APP_IN_GAME=1 webpack --mode=production && node build.js --mode=production",
     "dev": "cross-env REACT_APP_IN_GAME=0 webpack-dev-server --mode=development",
     "serve": "serve dist -p 3002",
     "clean": "rm -rf dist",
-    "watch": "concurrently \"pnpm watch:client\" \"pnpm watch:server\"  \"pnpm watch:nui\"",
-    "watch:nui": "esbuild src/index.tsx --outdir=dist/html --watch --target=es6 --bundle --loader:.png=dataurl",
-    "watch:client": "esbuild client/client.ts --bundle --watch --outfile=dist/client.js",
-    "watch:server": "esbuild server/server.ts --bundle --sourcemap --platform=node --watch --outfile=dist/server.js"
+    "watch:scripts": "node build.js"
   },
   "dependencies": {
     "@emotion/react": "^11.7.0",
