@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { NuiProvider } from 'react-fivem-hooks';
+import { NuiProvider, useNuiEvent } from 'react-fivem-hooks';
 import { Route } from 'react-router-dom';
 import styled from 'styled-components';
 import { IPhoneSettings } from '@npwd/types';
@@ -16,7 +16,7 @@ import { RecoilRoot } from 'recoil';
 import fetchNui from './utils/fetchNui';
 import { Character, useSetCharacter } from './atoms/character';
 import { RecoilEnv } from 'recoil';
-
+import { useSetLicenses } from './atoms/licenses';
 // Disable atom warnings due to HMR
 RecoilEnv.RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED = false;
 
@@ -47,14 +47,20 @@ interface AppProps {
 
 const App = (props: AppProps) => {
   const setCharacter = useSetCharacter();
+  const setLicenses = useSetLicenses();
 
   useEffect(() => {
+    // Combine into one?
     fetchNui<Character>('getCharacter', null, {
       firstName: 'Michael',
       lastName: 'Jordan',
       dob: '01/02/1992',
       gender: 'Male',
     }).then((data: Character) => setCharacter(data));
+    fetchNui<Record<string, { issued: string }>>('getLicenses', null).then((data) => {
+      if (!data) return;
+      setLicenses(Object.entries(data));
+    });
   }, []);
 
   return (
