@@ -21,6 +21,11 @@ interface Props {
 
 export const SharedCard: React.FC<Props> = ({ data }) => {
   const [collapsed, setCollapsed] = React.useState(false);
+  const [expanded, setExpanded] = React.useState<number | false>(false);
+
+  const handleChange = (panel: number) => (event: React.SyntheticEvent, isExpanded: boolean) => {
+    setExpanded(isExpanded ? panel : false);
+  };
 
   return (
     <Card>
@@ -35,8 +40,10 @@ export const SharedCard: React.FC<Props> = ({ data }) => {
       />
       <Collapse in={collapsed}>
         <CardContent>
-          {data.documents.map((document) => (
+          {data.documents.map((document, index) => (
             <Accordion
+              expanded={expanded === index}
+              onChange={handleChange(index)}
               sx={{ backgroundColor: 'grey.900' }}
               key={document.type === 'id' ? document.type : document.name}
             >
