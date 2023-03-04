@@ -50,16 +50,10 @@ const App = (props: AppProps) => {
   const setLicenses = useSetLicenses();
 
   useEffect(() => {
-    // Combine into one?
-    fetchNui<Character>('getCharacter', null, {
-      firstName: 'Michael',
-      lastName: 'Jordan',
-      dob: '01/02/1992',
-      gender: 'Male',
-    }).then((data: Character) => setCharacter(data));
-    fetchNui<Record<string, { issued: string }>>('getLicenses', null).then((data) => {
-      if (!data) return;
-      setLicenses(Object.entries(data));
+    fetchNui<{ character: Character; licenses: Record<string, { issued: string }> }>('openApp', null).then((data) => {
+      setCharacter(data.character);
+      if (!data.licenses) return;
+      setLicenses(Object.entries(data.licenses));
     });
   }, []);
 
