@@ -20,9 +20,7 @@ export const IdentityDialog: React.FC = () => {
       </DialogContent>
       <DialogActions>
         <Button onClick={() => setIdentityDialog(false)}>Cancel</Button>
-        <Button disableElevation onClick={() => setIdentityDialog(false)} variant="contained">
-          Confirm
-        </Button>
+        <Button onClick={() => setIdentityDialog(false)}>Confirm</Button>
       </DialogActions>
     </Dialog>
   );

@@ -20,9 +20,7 @@ export const LicenseDialog: React.FC = () => {
       </DialogContent>
       <DialogActions>
         <Button onClick={() => setDialog((ps) => ({ ...ps, visible: false }))}>Cancel</Button>
-        <Button disableElevation onClick={() => setDialog((ps) => ({ ...ps, visible: false }))} variant="contained">
-          Confirm
-        </Button>
+        <Button onClick={() => setDialog((ps) => ({ ...ps, visible: false }))}>Confirm</Button>
       </DialogActions>
     </Dialog>
   );
