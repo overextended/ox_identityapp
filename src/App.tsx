@@ -17,6 +17,8 @@ import fetchNui from './utils/fetchNui';
 import { Character, useSetCharacter } from './atoms/character';
 import { RecoilEnv } from 'recoil';
 import { useSetLicenses } from './atoms/licenses';
+import Shared from './pages/shared/Shared';
+
 // Disable atom warnings due to HMR
 RecoilEnv.RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED = false;
 
@@ -50,7 +52,22 @@ const App = (props: AppProps) => {
   const setLicenses = useSetLicenses();
 
   useEffect(() => {
-    fetchNui<{ character: Character; licenses: Record<string, { issued: string }> }>('openApp', null).then((data) => {
+    fetchNui<{ character: Character; licenses: Record<string, { issued: string }> }>('openApp', null, {
+      character: {
+        firstName: 'Trevor',
+        lastName: 'Phillips',
+        dob: '01/02/1990',
+        gender: 'Male',
+      },
+      licenses: {
+        driving: {
+          issued: '04/03/2023',
+        },
+        hunting: {
+          issued: '23/01/2023',
+        },
+      },
+    }).then((data) => {
       setCharacter(data.character);
       if (!data.licenses) return;
       setLicenses(Object.entries(data.licenses));
@@ -68,6 +85,9 @@ const App = (props: AppProps) => {
             </Route>
             <Route path={`${path}/licenses`}>
               <Licenses />
+            </Route>
+            <Route path={`${path}/shared`}>
+              <Shared />
             </Route>
           </Content>
           <Footer />
