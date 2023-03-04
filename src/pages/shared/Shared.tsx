@@ -3,6 +3,7 @@ import PageHeading from '../../components/PageHeading';
 import { Box, InputAdornment, TextField } from '@mui/material';
 import { Search } from '@mui/icons-material';
 import SharedCard from './components/SharedCard';
+import fetchNui from '../../utils/fetchNui';
 
 type IDCard = {
   type: 'id';
@@ -25,7 +26,7 @@ export interface ISharedCard {
 const CARDS: ISharedCard[] = [
   {
     firstName: 'Michael',
-    lastName: 'Santa',
+    lastName: 'De Santa',
     documents: [
       { type: 'id', dob: '01/01/1999', gender: 'Male' },
       { type: 'license', name: 'Driving', issued: '01/01/2023' },
@@ -43,6 +44,15 @@ const CARDS: ISharedCard[] = [
 ];
 
 export const Shared: React.FC = () => {
+  // TODO: Replace state with Recoil
+  const [values, setValues] = React.useState<ISharedCard[]>([]);
+
+  React.useEffect(() => {
+    fetchNui<ISharedCard[]>('getShared', null, CARDS).then((data) => {
+      setValues(data);
+    });
+  }, []);
+
   return (
     <>
       <PageHeading heading="Shared documents" />
@@ -59,7 +69,7 @@ export const Shared: React.FC = () => {
             ),
           }}
         />
-        {CARDS.map((card) => (
+        {values.map((card) => (
           <SharedCard key={`${card.firstName} ${card.lastName}`} data={card} />
         ))}
       </Box>

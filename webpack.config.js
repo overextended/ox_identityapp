@@ -55,6 +55,9 @@ module.exports = {
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
   },
+  performance: {
+    hints: false,
+  },
   output: {
     path: path.resolve(__dirname, 'web/dist'),
     publicPath: 'auto',
