@@ -3,6 +3,7 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
+  Avatar,
   Box,
   Card,
   CardContent,
@@ -30,6 +31,11 @@ export const SharedCard: React.FC<Props> = ({ data }) => {
   return (
     <Card>
       <CardHeader
+        avatar={
+          <Avatar sx={{ backgroundColor: 'primary.main', color: 'primary.contrastText' }}>
+            {data.firstName.charAt(0) + data.lastName.charAt(0)}
+          </Avatar>
+        }
         title={`${data.firstName} ${data.lastName}`}
         subheader="Now"
         action={
