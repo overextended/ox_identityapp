@@ -40,7 +40,12 @@ export const SharedCard: React.FC<Props> = ({ data }) => {
         subheader="Now"
         action={
           <IconButton onClick={() => setCollapsed(!collapsed)}>
-            <ExpandMore />
+            <ExpandMore
+              sx={(theme) => ({
+                transform: collapsed ? 'rotate(180deg)' : 'rotate(0deg)',
+                transition: theme.transitions.create('transform', { duration: theme.transitions.duration.shortest }),
+              })}
+            />
           </IconButton>
         }
       />
