@@ -53,6 +53,7 @@ export const SharedCard: React.FC<Props> = ({ data }) => {
         <CardContent>
           {data.documents.map((document, index) => (
             <Accordion
+              TransitionProps={{ unmountOnExit: true }}
               expanded={expanded === index}
               onChange={handleChange(index)}
               sx={{ backgroundColor: 'grey.900' }}
