@@ -15,7 +15,7 @@ export const externalAppConfig = (settings: Settings) => ({
   id: 'IDENTITY',
   path,
   nameLocale: localizedAppName[settings?.language ?? defaultLanguage],
-  color: '#fff',
+  color: '#00315f',
   backgroundColor: '#a6c8ff',
   icon: AppIcon,
   notificationIcon: NotificationIcon,
