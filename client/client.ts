@@ -1,40 +1,15 @@
 import { triggerServerCallback } from '@overextended/ox_lib/client';
 import { player } from '@overextended/ox_core/client';
+import type { SharedDocument, ServerIdentityData } from '../typings/documents';
 
-// TODO: Move types and export
-type IDCard = {
-  type: 'id';
-  dob: string;
-  gender: string;
-};
-
-type LicenseCard = {
-  type: 'license';
-  issued: string;
-};
-
-interface SharedDocuments {
-  firstName: string;
-  lastName: string;
-  documents: Array<IDCard | LicenseCard>;
-}
-
-const sharedDocuments = new Map<number, SharedDocuments>();
-
-interface IdentificationData {
-  uid: number;
-  firstName: string;
-  lastName: string;
-  gender: string;
-  dob: string;
-}
+const sharedDocuments = new Map<number, SharedDocument>();
 
 RegisterNuiCallback('shareIdentity', async (id: number, cb: Function) => {
   const success = await triggerServerCallback<boolean>('ox_identityapp:shareIdentity', null, id);
   cb(success);
 });
 
-onNet('ox_identityapp:addIdentity', (data: IdentificationData) => {
+onNet('ox_identityapp:addIdentity', (data: ServerIdentityData) => {
   const sharedDocument = sharedDocuments.get(data.uid);
   let shared = false;
   if (!sharedDocument) {
@@ -42,6 +17,7 @@ onNet('ox_identityapp:addIdentity', (data: IdentificationData) => {
     sharedDocuments.set(data.uid, {
       firstName: data.firstName,
       lastName: data.lastName,
+      shareTime: Date.now(),
       documents: [{ type: 'id', gender: data.gender, dob: data.dob }],
     });
   } else {
