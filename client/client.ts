@@ -35,11 +35,11 @@ onNet('ox_identityapp:addIdentity', (data: ServerIdentityData) => {
   if (!shared) return;
   global.exports['npwd'].createNotification({
     notisId: 'npwd:shareDocument',
-    appId: 'ox_identityapp',
+    appId: 'IDENTITY',
     content: `${data.firstName} ${data.lastName} shared a document with you!`,
     keepOpen: false,
-    duration: 5000,
-    path: '/ox_identityapp',
+    duration: 8000, // Doesn't seem to work?
+    path: '/identity/shared',
   });
 });
 

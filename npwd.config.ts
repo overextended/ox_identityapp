@@ -1,5 +1,5 @@
 import App from './src/App';
-import { AppIcon } from './icon';
+import { AppIcon, NotificationIcon } from './icon';
 
 const defaultLanguage = 'en';
 const localizedAppName = {
@@ -10,13 +10,16 @@ interface Settings {
   language: 'en';
 }
 
-export const path = '/ox_identityapp';
-export default (settings: Settings) => ({
-  id: 'ox_identityapp',
+export const path = '/identity';
+export const externalAppConfig = (settings: Settings) => ({
+  id: 'IDENTITY',
   path,
   nameLocale: localizedAppName[settings?.language ?? defaultLanguage],
   color: '#fff',
   backgroundColor: '#a6c8ff',
   icon: AppIcon,
+  notificationIcon: NotificationIcon,
   app: App,
 });
+
+export default externalAppConfig;
