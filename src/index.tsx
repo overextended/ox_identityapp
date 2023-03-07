@@ -18,6 +18,7 @@ import { RecoilRoot } from 'recoil';
 import { IPhoneSettings } from '@npwd/types';
 import i18next from 'i18next';
 import { createTheme } from '@mui/material';
+import SnackbarProvider from './snackbar/SnackbarProvider';
 
 const Container = styled.div`
   position: relative;
@@ -80,14 +81,16 @@ const Root = () => {
   return (
     <HashRouter>
       <RecoilRoot>
-        <NuiProvider>
-          <Container>
-            <Background src={image} />
-            <AppContainer>
-              <App settings={settings} i18n={i18next} theme={theme} />
-            </AppContainer>
-          </Container>
-        </NuiProvider>
+        <SnackbarProvider>
+          <NuiProvider>
+            <Container>
+              <Background src={image} />
+              <AppContainer>
+                <App settings={settings} i18n={i18next} theme={theme} />
+              </AppContainer>
+            </Container>
+          </NuiProvider>
+        </SnackbarProvider>
       </RecoilRoot>
     </HashRouter>
   );

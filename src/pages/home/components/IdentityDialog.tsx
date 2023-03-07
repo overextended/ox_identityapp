@@ -2,10 +2,12 @@ import React, { useRef } from 'react';
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField } from '@mui/material';
 import { useShareIdentityDialogState } from '../../../atoms/dialogs';
 import fetchNui from '../../../utils/fetchNui';
+import { useSnackbar } from '../../../snackbar/useSnackbar';
 
 export const IdentityDialog: React.FC = () => {
   const [identityDialog, setIdentityDialog] = useShareIdentityDialogState();
   const inputRef = useRef<HTMLInputElement | null>(null);
+  const snackbar = useSnackbar();
 
   return (
     <Dialog
@@ -23,9 +25,15 @@ export const IdentityDialog: React.FC = () => {
       <DialogActions>
         <Button onClick={() => setIdentityDialog(false)}>Cancel</Button>
         <Button
-          onClick={() => {
+          onClick={async () => {
             setIdentityDialog(false);
-            fetchNui('shareIdentity', inputRef.current ? +inputRef.current.value : null);
+            const success = await fetchNui('shareIdentity', inputRef.current ? +inputRef.current.value : null, true);
+            snackbar.addAlert({
+              type: success ? 'success' : 'error',
+              message: success
+                ? 'Identity successfully shared.'
+                : 'An error occurred while trying to share identity this is super long lmao.',
+            });
           }}
         >
           Confirm

@@ -18,6 +18,8 @@ import { Character, useSetCharacter } from './atoms/character';
 import { RecoilEnv } from 'recoil';
 import { useSetLicenses } from './atoms/licenses';
 import Shared from './pages/shared/Shared';
+import SnackbarProvider from './snackbar/SnackbarProvider';
+import { PhoneSnackbar } from './snackbar/PhoneSnackbar';
 
 // Disable atom warnings due to HMR
 RecoilEnv.RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED = false;
@@ -75,25 +77,28 @@ const App = (props: AppProps) => {
   }, []);
 
   return (
-    <StyledEngineProvider injectFirst>
-      <ThemeSwitchProvider mode={props.theme.palette.mode}>
-        <Container square elevation={0} id="modalContainer">
-          <Header />
-          <Content>
-            <Route exact path={path}>
-              <Home />
-            </Route>
-            <Route path={`${path}/licenses`}>
-              <Licenses />
-            </Route>
-            <Route path={`${path}/shared`}>
-              <Shared />
-            </Route>
-          </Content>
-          <Footer />
-        </Container>
-      </ThemeSwitchProvider>
-    </StyledEngineProvider>
+    <SnackbarProvider>
+      <StyledEngineProvider injectFirst>
+        <ThemeSwitchProvider mode={props.theme.palette.mode}>
+          <PhoneSnackbar />
+          <Container square elevation={0} id="modalContainer">
+            <Header />
+            <Content>
+              <Route exact path={path}>
+                <Home />
+              </Route>
+              <Route path={`${path}/licenses`}>
+                <Licenses />
+              </Route>
+              <Route path={`${path}/shared`}>
+                <Shared />
+              </Route>
+            </Content>
+            <Footer />
+          </Container>
+        </ThemeSwitchProvider>
+      </StyledEngineProvider>
+    </SnackbarProvider>
   );
 };
 

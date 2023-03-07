@@ -18,7 +18,7 @@ async function fetchNui<T = any, D = any>(eventName: string, data?: D, mockResp?
     body: JSON.stringify(data),
   };
 
-  if (isEnvBrowser() && mockResp) {
+  if (isEnvBrowser() && mockResp !== undefined) {
     return mockResp;
   }
 
