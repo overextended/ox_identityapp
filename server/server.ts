@@ -3,7 +3,7 @@ import { GetPlayer } from '@overextended/ox_core/server';
 import type { ServerIdentityData } from '../typings/documents';
 
 onClientCallback('ox_identityapp:shareIdentity', (playerId, id: number) => {
-  const player = GetPlayer(id);
+  const player = GetPlayer(playerId);
 
   if (!player || playerId === id) return false;
 

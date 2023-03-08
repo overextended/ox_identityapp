@@ -42,7 +42,6 @@ onNet('ox_identityapp:addIdentity', (data: ServerIdentityData) => {
 onNet(
   'ox_identityapp:addDocument',
   (data: { userId: number; firstName: string; lastName: string; name: string; issued: string }) => {
-    console.log(JSON.stringify(data, null, 2));
     const sharedDocument = sharedDocuments.get(data.userId);
     if (!sharedDocument) {
       sharedDocuments.set(data.userId, {
