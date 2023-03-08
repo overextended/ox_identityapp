@@ -31,7 +31,7 @@ onClientCallback('ox_identityapp:shareDocument', (playerId, data: { id: number; 
   if (!document) return false;
 
   emitNet('ox_identityapp:addDocument', data.id, {
-    userid: player.userid,
+    userId: player.userid,
     firstName: player.firstname,
     lastName: player.lastname,
     name: data.document,
