@@ -2,9 +2,6 @@ import React from 'react';
 import PageHeading from '../../components/PageHeading';
 import { Box, InputAdornment, TextField } from '@mui/material';
 import { Search } from '@mui/icons-material';
-import SharedCard from './components/SharedCard';
-import fetchNui from '../../utils/fetchNui';
-import { useSharedDocumentsValue } from '../../atoms/shared';
 import DocumentList from './components/DocumentList';
 import LoadingCircle from '../../components/LoadingCircle';
 

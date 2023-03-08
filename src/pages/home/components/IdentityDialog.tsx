@@ -30,9 +30,7 @@ export const IdentityDialog: React.FC = () => {
             const success = await fetchNui('shareIdentity', inputRef.current ? +inputRef.current.value : null, true);
             snackbar.addAlert({
               type: success ? 'success' : 'error',
-              message: success
-                ? 'Identity successfully shared.'
-                : 'An error occurred while trying to share identity this is super long lmao.',
+              message: success ? 'Identity successfully shared.' : 'An error occurred while trying to share identity.',
             });
           }}
         >

@@ -4,11 +4,7 @@ import type { SharedDocument, ServerIdentityData } from '../typings/documents';
 
 const sharedDocuments = new Map<number, SharedDocument>();
 
-RegisterNuiCallback('shareIdentity', async (id: number, cb: Function) => {
-  const success = await triggerServerCallback<boolean>('ox_identityapp:shareIdentity', null, id);
-  cb(success);
-});
-
+// TODO: Refactor
 onNet('ox_identityapp:addIdentity', (data: ServerIdentityData) => {
   const sharedDocument = sharedDocuments.get(data.uid);
   let shared = false;
@@ -43,8 +39,42 @@ onNet('ox_identityapp:addIdentity', (data: ServerIdentityData) => {
   });
 });
 
+onNet(
+  'ox_identityapp:addDocument',
+  (data: { userId: number; firstName: string; lastName: string; name: string; issued: string }) => {
+    console.log(JSON.stringify(data, null, 2));
+    const sharedDocument = sharedDocuments.get(data.userId);
+    if (!sharedDocument) {
+      sharedDocuments.set(data.userId, {
+        firstName: data.firstName,
+        lastName: data.lastName,
+        shareTime: Date.now(),
+        documents: [{ type: 'license', name: data.name, issued: data.issued }],
+      });
+    } else {
+      const documents = sharedDocument.documents;
+      const index = documents.findIndex((document) => document.type === 'license' && document.name === data.name);
+
+      if (index !== -1) return;
+
+      documents.push({ type: 'license', name: data.name, issued: data.issued });
+      sharedDocuments.set(data.userId, { ...sharedDocuments.get(data.userId), documents });
+    }
+  }
+);
+
 RegisterNuiCallback('getShared', (_: any, cb: Function) => {
   cb(Array.from(sharedDocuments.values()));
+});
+
+RegisterNuiCallback('shareIdentity', async (id: number, cb: Function) => {
+  const success = await triggerServerCallback<boolean>('ox_identityapp:shareIdentity', null, id);
+  cb(success);
+});
+
+RegisterNuiCallback('shareDocument', async (data: { id: number; document: string }, cb: Function) => {
+  const success = await triggerServerCallback<boolean>('ox_identityapp:shareDocument', null, data);
+  cb(success);
 });
 
 RegisterNuiCallback('openApp', async (_: any, cb: Function) => {

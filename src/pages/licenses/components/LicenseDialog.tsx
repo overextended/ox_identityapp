@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField } from '@mui/material';
 import { useShareLicenseDialogState } from '../../../atoms/dialogs';
+import fetchNui from '../../../utils/fetchNui';
+import { useSnackbar } from '../../../snackbar/useSnackbar';
 
 export const LicenseDialog: React.FC = () => {
   const [dialog, setDialog] = useShareLicenseDialogState();
+  const inputRef = useRef<HTMLInputElement | null>(null);
+  const snackbar = useSnackbar();
 
   return (
     <Dialog
@@ -16,11 +20,27 @@ export const LicenseDialog: React.FC = () => {
       <DialogTitle>Share license</DialogTitle>
       <DialogContent>
         <DialogContentText>{`Share your ${dialog.license.toLowerCase()} license with someone.`}</DialogContentText>
-        <TextField autoFocus variant="standard" label="Player ID" fullWidth />
+        <TextField autoFocus variant="standard" label="Player ID" fullWidth inputRef={inputRef} />
       </DialogContent>
       <DialogActions>
         <Button onClick={() => setDialog((ps) => ({ ...ps, visible: false }))}>Cancel</Button>
-        <Button onClick={() => setDialog((ps) => ({ ...ps, visible: false }))}>Confirm</Button>
+        <Button
+          onClick={async () => {
+            setDialog((ps) => ({ ...ps, visible: false }));
+            const success = await fetchNui<boolean>('shareDocument', {
+              id: inputRef.current ? +inputRef.current.value : null,
+              document: dialog.license.toLowerCase(),
+            });
+            snackbar.addAlert({
+              type: success ? 'success' : 'error',
+              message: success
+                ? 'Document successfully shared.'
+                : 'An error occurred while trying to share the document.',
+            });
+          }}
+        >
+          Confirm
+        </Button>
       </DialogActions>
     </Dialog>
   );

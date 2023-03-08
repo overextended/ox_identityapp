@@ -19,3 +19,24 @@ onClientCallback('ox_identityapp:shareIdentity', (playerId, id: number) => {
 
   return true;
 });
+
+onClientCallback('ox_identityapp:shareDocument', (playerId, data: { id: number; document: string }) => {
+  const player = GetPlayer(playerId);
+
+  if (!player || playerId === data.id) return false;
+
+  console.log(data.document);
+  const document = player.getLicense(data.document);
+  console.log('Document:', document);
+  if (!document) return false;
+
+  emitNet('ox_identityapp:addDocument', data.id, {
+    userid: player.userid,
+    firstName: player.firstname,
+    lastName: player.lastname,
+    name: data.document,
+    issued: document.issued,
+  });
+
+  return true;
+});
