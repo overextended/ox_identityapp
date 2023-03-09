@@ -1,69 +1,65 @@
 import { triggerServerCallback } from '@overextended/ox_lib/client';
 import { player } from '@overextended/ox_core/client';
-import type { SharedDocument, ServerIdentityData } from '../typings/documents';
+import type { SharedDocument, ServerIdentityData, ServerLicenseData } from '../typings/documents';
 
-const sharedDocuments = new Map<number, SharedDocument>();
+const phoneNotify = (notisId: string, content: string, duration: number, path: string) =>
+  global.exports.npwd.createNotification({
+    notisId,
+    appId: 'IDENTITY',
+    content,
+    keepOpen: false,
+    duration: duration, // Doesn't seem to work?
+    path,
+  });
 
-// TODO: Refactor
-onNet('ox_identityapp:addIdentity', (data: ServerIdentityData) => {
-  const sharedDocument = sharedDocuments.get(data.uid);
-  let shared = false;
-  if (!sharedDocument) {
-    shared = true;
-    sharedDocuments.set(data.uid, {
+const sharedData = new Map<number, SharedDocument>();
+
+onNet('ox_identityapp:addDocument', (data: ServerIdentityData | ServerLicenseData) => {
+  const shared = sharedData.get(data.uid);
+  if (!shared) {
+    sharedData.set(data.uid, {
       firstName: data.firstName,
       lastName: data.lastName,
       shareTime: Date.now(),
-      documents: [{ type: 'id', gender: data.gender, dob: data.dob }],
+      documents: [
+        data.type === 'id'
+          ? { type: 'id', gender: data.gender, dob: data.dob }
+          : { type: 'license', name: data.name, issued: data.issued },
+      ],
     });
-  } else {
-    const documents = sharedDocument.documents;
-    const index = documents.findIndex((document) => document.type === 'id');
 
-    if (index !== -1) return;
-
-    shared = true;
-
-    documents.push({ type: 'id', gender: data.gender, dob: data.dob });
-    sharedDocuments.set(data.uid, { ...sharedDocuments.get(data.uid), documents });
+    return phoneNotify(
+      'npwd:shareDocument',
+      `${data.firstName} ${data.lastName} shared a document with you!`,
+      8000,
+      '/identity/shared'
+    );
   }
 
-  if (!shared) return;
-  global.exports['npwd'].createNotification({
-    notisId: 'npwd:shareDocument',
-    appId: 'IDENTITY',
-    content: `${data.firstName} ${data.lastName} shared a document with you!`,
-    keepOpen: false,
-    duration: 8000, // Doesn't seem to work?
-    path: '/identity/shared',
-  });
+  const documents = shared.documents;
+  const documentIndex = documents.findIndex((document) =>
+    data.type === 'id' ? document.type === 'id' : document.type === 'license' && document.name === data.name
+  );
+
+  if (documentIndex !== -1) return;
+
+  documents.push(
+    data.type === 'id'
+      ? { type: 'id', gender: data.gender, dob: data.dob }
+      : { type: 'license', name: data.name, issued: data.issued }
+  );
+  sharedData.set(data.uid, { ...sharedData.get(data.uid), documents });
+
+  phoneNotify(
+    'npwd:shareDocument',
+    `${data.firstName} ${data.lastName} shared a document with you!`,
+    8000,
+    '/identity/shared'
+  );
 });
 
-onNet(
-  'ox_identityapp:addDocument',
-  (data: { userId: number; firstName: string; lastName: string; name: string; issued: string }) => {
-    const sharedDocument = sharedDocuments.get(data.userId);
-    if (!sharedDocument) {
-      sharedDocuments.set(data.userId, {
-        firstName: data.firstName,
-        lastName: data.lastName,
-        shareTime: Date.now(),
-        documents: [{ type: 'license', name: data.name, issued: data.issued }],
-      });
-    } else {
-      const documents = sharedDocument.documents;
-      const index = documents.findIndex((document) => document.type === 'license' && document.name === data.name);
-
-      if (index !== -1) return;
-
-      documents.push({ type: 'license', name: data.name, issued: data.issued });
-      sharedDocuments.set(data.userId, { ...sharedDocuments.get(data.userId), documents });
-    }
-  }
-);
-
 RegisterNuiCallback('getShared', (_: any, cb: Function) => {
-  cb(Array.from(sharedDocuments.values()));
+  cb(Array.from(sharedData.values()));
 });
 
 RegisterNuiCallback('shareIdentity', async (id: number, cb: Function) => {

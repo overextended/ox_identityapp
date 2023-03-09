@@ -17,10 +17,19 @@ export interface SharedDocument {
   documents: Array<IDCard | LicenseCard>;
 }
 
-export interface ServerIdentityData {
+interface BaseServerData<T = unknown> {
   uid: number;
+  type: T;
   firstName: string;
   lastName: string;
+}
+
+export interface ServerIdentityData extends BaseServerData<'id'> {
   gender: string;
   dob: string;
+}
+
+export interface ServerLicenseData extends BaseServerData<'license'> {
+  name: string;
+  issued: string;
 }
