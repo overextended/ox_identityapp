@@ -20,6 +20,7 @@ import { useSetLicenses } from './atoms/licenses';
 import Shared from './pages/shared/Shared';
 import SnackbarProvider from './snackbar/SnackbarProvider';
 import { PhoneSnackbar } from './snackbar/PhoneSnackbar';
+import LoadingCircle from './components/LoadingCircle';
 
 // Disable atom warnings due to HMR
 RecoilEnv.RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED = false;
@@ -50,32 +51,6 @@ interface AppProps {
 }
 
 const App = (props: AppProps) => {
-  const setCharacter = useSetCharacter();
-  const setLicenses = useSetLicenses();
-
-  useEffect(() => {
-    fetchNui<{ character: Character; licenses: Record<string, { issued: string }> }>('openApp', null, {
-      character: {
-        firstName: 'Trevor',
-        lastName: 'Phillips',
-        dob: '01/02/1990',
-        gender: 'Male',
-      },
-      licenses: {
-        driving: {
-          issued: '04/03/2023',
-        },
-        hunting: {
-          issued: '23/01/2023',
-        },
-      },
-    }).then((data) => {
-      setCharacter(data.character);
-      if (!data.licenses) return;
-      setLicenses(Object.entries(data.licenses));
-    });
-  }, []);
-
   return (
     <SnackbarProvider>
       <StyledEngineProvider injectFirst>
@@ -85,10 +60,14 @@ const App = (props: AppProps) => {
             <Header />
             <Content>
               <Route exact path={path}>
-                <Home />
+                <React.Suspense fallback={<LoadingCircle />}>
+                  <Home />
+                </React.Suspense>
               </Route>
               <Route path={`${path}/licenses`}>
-                <Licenses />
+                <React.Suspense fallback={<LoadingCircle />}>
+                  <Licenses />
+                </React.Suspense>
               </Route>
               <Route path={`${path}/shared`}>
                 <Shared />

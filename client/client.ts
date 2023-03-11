@@ -72,16 +72,17 @@ RegisterNuiCallback('shareDocument', async (data: { id: number; document: string
   cb(success);
 });
 
-RegisterNuiCallback('openApp', async (_: any, cb: Function) => {
-  const gender = player?.get('gender');
+RegisterNuiCallback('getLicenses', async (_: any, cb: Function) => {
   const licenses = await triggerServerCallback<Record<string, { issued: string }>>('ox:getLicense', null);
+  cb(licenses);
+});
+
+RegisterNuiCallback('getCharacter', (_: any, cb: Function) => {
+  const gender = player?.get('gender');
   cb({
-    character: {
-      firstName: player?.firstname,
-      lastName: player?.lastname,
-      dob: player?.get('dateofbirth'),
-      gender: gender.charAt(0).toUpperCase() + gender.slice(1),
-    },
-    licenses,
+    firstName: player?.firstname,
+    lastName: player?.lastname,
+    dob: player?.get('dateofbirth'),
+    gender: gender.charAt(0).toUpperCase() + gender.slice(1),
   });
 });
