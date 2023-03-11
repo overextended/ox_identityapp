@@ -39,9 +39,7 @@ export const Shared: React.FC = () => {
             ),
           }}
         />
-        <React.Suspense fallback={<LoadingCircle />}>
-          <DocumentList />
-        </React.Suspense>
+        <DocumentList />
       </Box>
     </>
   );
