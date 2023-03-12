@@ -73,9 +73,7 @@ const App = (props: AppProps) => {
                 </React.Suspense>
               </Route>
               <Route path={`${path}/shared`}>
-                <React.Suspense fallback={<LoadingCircle />}>
-                  <Shared />
-                </React.Suspense>
+                <Shared />
               </Route>
             </Content>
             <Footer />

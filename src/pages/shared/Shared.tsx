@@ -3,6 +3,7 @@ import PageHeading from '../../components/PageHeading';
 import { Box } from '@mui/material';
 import DocumentList from './components/DocumentList';
 import SearchField from './components/SearchField';
+import LoadingCircle from '../../components/LoadingCircle';
 
 export const Shared: React.FC = () => {
   return (
@@ -10,7 +11,9 @@ export const Shared: React.FC = () => {
       <PageHeading heading="Shared documents" />
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1, paddingRight: '2px' }}>
         <SearchField />
-        <DocumentList />
+        <React.Suspense fallback={<LoadingCircle />}>
+          <DocumentList />
+        </React.Suspense>
       </Box>
     </>
   );
