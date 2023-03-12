@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { NuiProvider, useNuiEvent } from 'react-fivem-hooks';
+import React from 'react';
+import { NuiProvider } from 'react-fivem-hooks';
 import { Route } from 'react-router-dom';
 import styled from 'styled-components';
 import { IPhoneSettings } from '@npwd/types';
@@ -13,17 +13,20 @@ import './index.css';
 import Footer from './components/Footer';
 import Licenses from './pages/licenses/Licenses';
 import { RecoilRoot } from 'recoil';
-import fetchNui from './utils/fetchNui';
-import { Character, useSetCharacter } from './atoms/character';
 import { RecoilEnv } from 'recoil';
-import { useSetLicenses } from './atoms/licenses';
 import Shared from './pages/shared/Shared';
 import SnackbarProvider from './snackbar/SnackbarProvider';
 import { PhoneSnackbar } from './snackbar/PhoneSnackbar';
 import LoadingCircle from './components/LoadingCircle';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+import updateLocale from 'dayjs/plugin/updateLocale';
 
 // Disable atom warnings due to HMR
 RecoilEnv.RECOIL_DUPLICATE_ATOM_KEY_CHECKING_ENABLED = false;
+
+dayjs.extend(relativeTime);
+dayjs.extend(updateLocale);
 
 const Container = styled(Paper)`
   flex: 1;

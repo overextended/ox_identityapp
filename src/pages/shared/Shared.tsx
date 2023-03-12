@@ -3,25 +3,6 @@ import PageHeading from '../../components/PageHeading';
 import { Box, InputAdornment, TextField } from '@mui/material';
 import { Search } from '@mui/icons-material';
 import DocumentList from './components/DocumentList';
-import LoadingCircle from '../../components/LoadingCircle';
-
-type IDCard = {
-  type: 'id';
-  dob: string;
-  gender: string;
-};
-
-type LicenseCard = {
-  type: 'license';
-  name: string;
-  issued: string;
-};
-
-export interface ISharedCard {
-  firstName: string;
-  lastName: string;
-  documents: Array<IDCard | LicenseCard>;
-}
 
 export const Shared: React.FC = () => {
   return (

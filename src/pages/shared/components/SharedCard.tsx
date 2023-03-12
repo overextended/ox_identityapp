@@ -13,11 +13,12 @@ import {
   Typography,
 } from '@mui/material';
 import { ExpandMore } from '@mui/icons-material';
-import { ISharedCard } from '../Shared';
 import DocumentField from './DocumentField';
+import type { SharedDocument } from '../../../../typings/documents';
+import dayjs from 'dayjs';
 
 interface Props {
-  data: ISharedCard;
+  data: SharedDocument;
 }
 
 export const SharedCard: React.FC<Props> = ({ data }) => {
@@ -37,7 +38,7 @@ export const SharedCard: React.FC<Props> = ({ data }) => {
           </Avatar>
         }
         title={`${data.firstName} ${data.lastName}`}
-        subheader="Now"
+        subheader={dayjs(data.shareTime).fromNow()}
         action={
           <IconButton onClick={() => setCollapsed(!collapsed)}>
             <ExpandMore

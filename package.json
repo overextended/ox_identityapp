@@ -47,6 +47,7 @@
     "@npwd/types": "^1.6.1",
     "@overextended/ox_core": "^0.16.0",
     "@overextended/ox_lib": "^3.1.0",
+    "dayjs": "^1.11.7",
     "esbuild": "^0.14.54",
     "eslint": "^8.35.0",
     "file-loader": "^6.2.0",

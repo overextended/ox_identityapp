@@ -48,7 +48,7 @@ onNet('ox_identityapp:addDocument', (data: ServerIdentityData | ServerLicenseDat
       ? { type: 'id', gender: data.gender, dob: data.dob }
       : { type: 'license', name: data.name, issued: data.issued }
   );
-  sharedData.set(data.uid, { ...sharedData.get(data.uid), documents });
+  sharedData.set(data.uid, { ...sharedData.get(data.uid), documents, shareTime: Date.now() });
 
   phoneNotify(
     'npwd:shareDocument',

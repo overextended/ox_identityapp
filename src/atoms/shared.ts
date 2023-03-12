@@ -1,11 +1,12 @@
 import { atom, selector, useRecoilState, useRecoilValue, useSetRecoilState } from 'recoil';
-import { ISharedCard } from '../pages/shared/Shared';
 import fetchNui from '../utils/fetchNui';
+import type { SharedDocument } from '../../typings/documents';
 
-const CARDS: ISharedCard[] = [
+const CARDS: SharedDocument[] = [
   {
     firstName: 'Michael',
     lastName: 'De Santa',
+    shareTime: Date.now(),
     documents: [
       { type: 'id', dob: '01/01/1999', gender: 'Male' },
       { type: 'license', name: 'Driving', issued: '01/01/2023' },
@@ -14,6 +15,7 @@ const CARDS: ISharedCard[] = [
   {
     firstName: 'Franklin',
     lastName: 'Clinton',
+    shareTime: Date.now(),
     documents: [
       { type: 'id', dob: '15/03/1889', gender: 'Male' },
       { type: 'license', name: 'Driving', issued: '02/02/2023' },
@@ -22,7 +24,7 @@ const CARDS: ISharedCard[] = [
   },
 ];
 
-const sharedDocumentsAtom = atom<ISharedCard[]>({
+const sharedDocumentsAtom = atom<SharedDocument[]>({
   key: 'sharedDocuments',
   default: selector({
     key: 'defaultSharedDocumentsValue',
