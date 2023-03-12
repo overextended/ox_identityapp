@@ -24,19 +24,32 @@ const CARDS: SharedDocument[] = [
   },
 ];
 
+const sharedFilterAtom = atom({
+  key: 'sharedFilter',
+  default: '',
+});
+
 const sharedDocumentsAtom = atom<SharedDocument[]>({
   key: 'sharedDocuments',
   default: selector({
     key: 'defaultSharedDocumentsValue',
-    get: async () => {
+    get: async ({ get }) => {
       const resp = await fetchNui('getShared', null, CARDS);
 
       if (!resp) return [];
 
-      return resp;
+      const filterVal = get(sharedFilterAtom).toLowerCase();
+
+      if (!filterVal || filterVal === '') return resp;
+
+      return resp.filter((document) => `${document.firstName} ${document.lastName}`.toLowerCase().includes(filterVal));
     },
   }),
 });
+
+export const useSharedFilterValue = () => useRecoilValue(sharedFilterAtom);
+export const useSetSharedFilter = () => useSetRecoilState(sharedFilterAtom);
+export const useSharedFilterState = () => useRecoilState(sharedFilterAtom);
 
 export const useSharedDocumentsValue = () => useRecoilValue(sharedDocumentsAtom);
 export const useSetSharedDocuments = () => useSetRecoilState(sharedDocumentsAtom);
