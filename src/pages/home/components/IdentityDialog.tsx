@@ -3,11 +3,13 @@ import { Button, Dialog, DialogActions, DialogContent, DialogContentText, Dialog
 import { useShareIdentityDialogState } from '../../../atoms/dialogs';
 import fetchNui from '../../../utils/fetchNui';
 import { useSnackbar } from '../../../snackbar/useSnackbar';
+import { useDisableControls } from 'react-fivem-hooks';
 
 export const IdentityDialog: React.FC = () => {
   const [identityDialog, setIdentityDialog] = useShareIdentityDialogState();
   const inputRef = useRef<HTMLInputElement | null>(null);
   const snackbar = useSnackbar();
+  const { controls } = useDisableControls({ resourceName: 'ox_identityapp' });
 
   return (
     <Dialog
@@ -20,7 +22,7 @@ export const IdentityDialog: React.FC = () => {
       <DialogTitle>Share identity</DialogTitle>
       <DialogContent>
         <DialogContentText>Share the details of your person to someone else.</DialogContentText>
-        <TextField inputRef={inputRef} autoFocus variant="standard" label="Player ID" fullWidth />
+        <TextField {...controls} inputRef={inputRef} autoFocus variant="standard" label="Player ID" fullWidth />
       </DialogContent>
       <DialogActions>
         <Button onClick={() => setIdentityDialog(false)}>Cancel</Button>
