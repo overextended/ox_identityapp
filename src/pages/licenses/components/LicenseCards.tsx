@@ -4,8 +4,6 @@ import { Share } from '@mui/icons-material';
 import { useSetShareLicenseDialog } from '../../../atoms/dialogs';
 import { useLicensesValue } from '../../../atoms/licenses';
 
-const firstToUpper = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
-
 const LicenseCards: React.FC = () => {
   const setDialog = useSetShareLicenseDialog();
   const licenses = useLicensesValue();
@@ -16,7 +14,7 @@ const LicenseCards: React.FC = () => {
         licenses.map((license) => (
           <Card key={license[0]}>
             <CardContent>
-              <Typography fontSize={20}>{firstToUpper(license[0])} license</Typography>
+              <Typography fontSize={20}>{license[1].label}</Typography>
               <Typography fontSize={14} color="#A6A7AB">
                 Issued: {license[1].issued}
               </Typography>

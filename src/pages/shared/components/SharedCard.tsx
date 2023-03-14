@@ -61,7 +61,7 @@ export const SharedCard: React.FC<Props> = ({ data }) => {
               key={document.type === 'id' ? document.type : document.name}
             >
               <AccordionSummary expandIcon={<ExpandMore />}>
-                <Typography>{document.type === 'id' ? 'Identification' : `${document.name} License`}</Typography>
+                <Typography>{document.type === 'id' ? 'Identification' : document.label}</Typography>
               </AccordionSummary>
               <AccordionDetails>
                 <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0.5 }}>

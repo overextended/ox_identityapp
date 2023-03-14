@@ -24,7 +24,12 @@ onNet('ox_identityapp:addDocument', (data: ServerIdentityData | ServerLicenseDat
       documents: [
         data.type === 'id'
           ? { type: 'id', gender: data.gender, dob: data.dob }
-          : { type: 'license', name: data.name, issued: data.issued },
+          : {
+              type: 'license',
+              label: GlobalState[`license.${data.name}`]?.label || 'NULL',
+              name: data.name,
+              issued: data.issued,
+            },
       ],
     });
 
@@ -46,7 +51,12 @@ onNet('ox_identityapp:addDocument', (data: ServerIdentityData | ServerLicenseDat
   documents.push(
     data.type === 'id'
       ? { type: 'id', gender: data.gender, dob: data.dob }
-      : { type: 'license', name: data.name, issued: data.issued }
+      : {
+          type: 'license',
+          name: data.name,
+          label: GlobalState[`license.${data.name}`]?.label || 'NULL',
+          issued: data.issued,
+        }
   );
   sharedData.set(data.uid, { ...sharedData.get(data.uid), documents, shareTime: Date.now() });
 
@@ -74,7 +84,15 @@ RegisterNuiCallback('shareDocument', async (data: { id: number; document: string
 
 RegisterNuiCallback('getLicenses', async (_: any, cb: Function) => {
   const licenses = await triggerServerCallback<Record<string, { issued: string }>>('ox:getLicense', null);
-  cb(licenses);
+  if (!licenses) return cb(null);
+  cb(
+    Object.entries(licenses).map((license) => {
+      const licenseName = license[0];
+      const licenseValue = license[1];
+
+      return [licenseName, { ...licenseValue, label: GlobalState[`license.${licenseName}`]?.label || 'NULL' }];
+    })
+  );
 });
 
 RegisterNuiCallback('getCharacter', (_: any, cb: Function) => {

@@ -7,6 +7,7 @@ export type IDCard = {
 export type LicenseCard = {
   type: 'license';
   name: string;
+  label: string;
   issued: string;
 };
 
