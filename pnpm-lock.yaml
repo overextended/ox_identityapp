@@ -11,7 +11,7 @@ specifiers:
   '@mui/material': ^5.11.11
   '@npwd/types': ^1.6.1
   '@overextended/ox_core': ^0.16.0
-  '@overextended/ox_lib': ^3.1.0
+  '@overextended/ox_lib': ^3.1.1
   '@pmmmwh/react-refresh-webpack-plugin': ^0.5.10
   '@types/node': ^18.14.4
   '@types/react': ^17.0.53
@@ -57,7 +57,7 @@ dependencies:
   '@mui/material': 5.11.11_okmdg45agjnois7npz2g5lj5ue
   '@npwd/types': 1.7.0
   '@overextended/ox_core': 0.16.0
-  '@overextended/ox_lib': 3.1.0
+  '@overextended/ox_lib': 3.1.1
   dayjs: 1.11.7
   esbuild: 0.14.54
   eslint: 8.35.0
@@ -408,8 +408,8 @@ packages:
     resolution: {integrity: sha512-5WWrHb+GohE/oorWngfGXJaqyGvUMNZF8AZDGRfeOT5/UAINNCFupcx7mdBbpBeQ3slYjSfJjRcfKK9tcK+ILA==}
     dev: true
 
-  /@citizenfx/client/2.0.6316-1:
-    resolution: {integrity: sha512-Owy7JOAF3QgezbUPBqyBS20ORNqGMQZAZbVtNHwVDtxUDEbK4igsxW6RmDRug5BFsMfykkBEqZb6uea20TNbgg==}
+  /@citizenfx/client/2.0.6331-1:
+    resolution: {integrity: sha512-IanSMIKkLmpwefyzwKA7+qPPjwK+Hxkzt/nB2Zh2N3LaoHPYFInATrln6qx7M5jBZnXDgHrAxs88v+a4GnJdIQ==}
     dev: false
 
   /@citizenfx/server/2.0.5885-1:
@@ -420,8 +420,8 @@ packages:
     resolution: {integrity: sha512-IV9PXHnQC3Jjm//otWPV31D5kSbM2Kq7thrOKao30ujXLW1rQqLjlbF1ckI4d7UZWu1BgFZGhODF+7cMKdIrsw==}
     dev: true
 
-  /@citizenfx/server/2.0.6316-1:
-    resolution: {integrity: sha512-djM+opelAVHyHELCcueYYDAUgsj/MU7XuM+gGdXGQP4332tCdY1Mi0W1NQpXEebNmQeasJfrWml1W/3RrQZZbQ==}
+  /@citizenfx/server/2.0.6331-1:
+    resolution: {integrity: sha512-D6oJVedbTLicSGJI/KhDFRAICqPsDkT8Cu66Tb+pVRoITpwLDyZ4vT1mxD9O40sRaxqHr27/hCKElTpywZ1wLA==}
     dev: false
 
   /@discoveryjs/json-ext/0.5.7:
@@ -851,14 +851,14 @@ packages:
   /@overextended/ox_core/0.16.0:
     resolution: {integrity: sha512-yp1kJsuGuzClMXPfb79KorvL8j+lbzgkBkdXsFwjm8FWGskxy5YalmEM4t+c6nYjpkr4aFZn8u3R9M9WEyVmeA==}
     dependencies:
-      '@citizenfx/client': 2.0.6316-1
-      '@citizenfx/server': 2.0.6316-1
+      '@citizenfx/client': 2.0.6331-1
+      '@citizenfx/server': 2.0.6331-1
       '@types/node': 16.18.14
       typescript: 4.9.5
     dev: false
 
-  /@overextended/ox_lib/3.1.0:
-    resolution: {integrity: sha512-ekGrCafJxTJsLWllNoN3KY3rlubaZ2r9vqVlDgKW9JcytPrPAkftg9Q49kzmVdttyfxZcpKhqm/lW2fORIXEOg==}
+  /@overextended/ox_lib/3.1.1:
+    resolution: {integrity: sha512-G2Giva9gSefeJVEbXml9zRJNE30hjSYnBQHpUMqL5jt8WphTlJm67wOH8Kdqde0CoIGj0BZOBb4p6UtdotCUIw==}
     dependencies:
       '@citizenfx/client': 2.0.5885-1
       '@citizenfx/server': 2.0.5885-1
