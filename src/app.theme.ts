@@ -1,4 +1,4 @@
-import { common, green } from '@mui/material/colors';
+import { common } from '@mui/material/colors';
 import { ThemeOptions } from '@mui/material';
 
 export const APP_PRIMARY_COLOR = '#a6c8ff';
@@ -10,10 +10,10 @@ export const lightTheme: ThemeOptions = {
   palette: {
     mode: 'light',
     primary: {
-      main: APP_PRIMARY_COLOR,
-      dark: green[700],
-      light: green[300],
-      contrastText: LIGHT_APP_TEXT_COLOR,
+      main: '#215fa6',
+      dark: '#3275c2',
+      light: '#215b9e',
+      contrastText: '#ffffff',
     },
     secondary: {
       main: '#d32f2f',

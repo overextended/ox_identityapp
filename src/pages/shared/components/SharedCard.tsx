@@ -57,7 +57,7 @@ export const SharedCard: React.FC<Props> = ({ data }) => {
               TransitionProps={{ unmountOnExit: true }}
               expanded={expanded === index}
               onChange={handleChange(index)}
-              sx={{ backgroundColor: 'grey.900' }}
+              sx={(theme) => ({ backgroundColor: theme.palette.mode === 'dark' ? 'grey.900' : 'grey.100' })}
               key={document.type === 'id' ? document.type : document.name}
             >
               <AccordionSummary expandIcon={<ExpandMore />}>
